@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>خاله جانی ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Vazirmatn',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 20% 20%,#2d1554 0%,transparent 30%),
+        radial-gradient(circle at 80% 80%,#102f63 0%,transparent 30%),
+        linear-gradient(135deg,#09051a,#160a2d,#07152e);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 1.2s ease;
+}
+
+/* پس زمینه بعد از کلیک */
+
+body.love-mode{
+    background:
+        radial-gradient(circle at 15% 20%,#ff8db7 0%,transparent 30%),
+        radial-gradient(circle at 85% 75%,#ff174f 0%,transparent 35%),
+        radial-gradient(circle at 50% 50%,#ff4f87 0%,transparent 45%),
+        linear-gradient(135deg,#ff003c,#ff4f87,#ff174f);
+}
+
+/* نورهای پس زمینه */
+
+.glow{
+    position:fixed;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.45;
+    animation:floatGlow 7s infinite alternate ease-in-out;
+    pointer-events:none;
+}
+
+.glow.one{
+    background:#8b35ff;
+    top:-100px;
+    left:-100px;
+}
+
+.glow.two{
+    background:#00d9ff;
+    bottom:-120px;
+    right:-100px;
+    animation-delay:2s;
+}
+
+.love-mode .glow.one{
+    background:#ff0055;
+}
+
+.love-mode .glow.two{
+    background:#ffb6d5;
+}
+
+@keyframes floatGlow{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(70px,40px) scale(1.3)}
+}
+
+/* ذرات */
+
+.particle{
+    position:fixed;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    opacity:.7;
+    pointer-events:none;
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+    from{
+        transform:translateY(110vh) scale(.3);
+        opacity:0;
+    }
+    15%{opacity:.8}
+    85%{opacity:.8}
+    to{
+        transform:translateY(-10vh) scale(1.2);
+        opacity:0;
+    }
+}
+
+/* کارت */
+
+.card{
+    position:relative;
+    width:min(90%,650px);
+    padding:65px 35px;
+    text-align:center;
+    border-radius:35px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.4),
+        inset 0 1px rgba(255,255,255,.25);
+    animation:cardEntrance 1.2s cubic-bezier(.17,.89,.32,1.28);
+    z-index:5;
+}
+
+@keyframes cardEntrance{
+    0%{
+        opacity:0;
+        transform:scale(.5) rotate(-8deg);
+        filter:blur(20px);
+    }
+    70%{
+        transform:scale(1.06) rotate(2deg);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1) rotate(0);
+        filter:blur(0);
+    }
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:37px;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+    opacity:.25;
+    z-index:-1;
+    animation:borderShine 4s linear infinite;
+}
+
+@keyframes borderShine{
+    0%{transform:translateX(-100%)}
+    100%{transform:translateX(100%)}
+}
+
+.title{
+    font-size:clamp(30px,7vw,65px);
+    font-weight:900;
+    margin-bottom:15px;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.7),
+        0 0 30px #a600ff;
+    animation:titlePulse 2.5s infinite ease-in-out;
+}
+
+@keyframes titlePulse{
+    0%,100%{
+        transform:scale(1);
+        text-shadow:0 0 10px rgba(255,255,255,.7),0 0 25px #8b35ff;
+    }
+    50%{
+        transform:scale(1.04);
+        text-shadow:0 0 15px white,0 0 50px #ff4edb;
+    }
+}
+
+.subtitle{
+    font-size:17px;
+    opacity:.8;
+    margin-bottom:35px;
+}
+
+/* دکمه */
+
+.love-button{
+    position:relative;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    padding:20px 45px;
+    border-radius:999px;
+    color:white;
+    font-size:22px;
+    font-weight:900;
+    background:linear-gradient(135deg,#ff197d,#9c27ff);
+    box-shadow:
+        0 0 15px #ff197d,
+        0 0 35px rgba(255,25,125,.6),
+        0 10px 30px rgba(0,0,0,.35);
+    transition:.25s;
+    animation:buttonFloat 2s infinite ease-in-out;
+}
+
+@keyframes buttonFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-7px)}
+}
+
+.love-button:hover{
+    transform:scale(1.08);
+    box-shadow:
+        0 0 25px #ff197d,
+        0 0 70px #ff197d,
+        0 15px 35px rgba(0,0,0,.4);
+}
+
+.love-button:active{
+    transform:scale(.9);
+}
+
+/* حلقه نور دور دکمه */
+
+.love-button::before,
+.love-button::after{
+    content:"";
+    position:absolute;
+    inset:-8px;
+    border:2px solid rgba(255,255,255,.5);
+    border-radius:999px;
+    animation:ring 2s infinite;
+}
+
+.love-button::after{
+    animation-delay:1s;
+}
+
+@keyframes ring{
+    0%{
+        transform:scale(.8);
+        opacity:.8;
+    }
+    100%{
+        transform:scale(1.35);
+        opacity:0;
+    }
+}
+
+/* پیام */
+
+.message{
+    display:none;
+    margin-top:35px;
+    font-size:clamp(30px,8vw,75px);
+    font-weight:900;
+    line-height:1.3;
+    color:white;
+    text-shadow:
+        0 0 10px #fff,
+        0 0 25px #ff0066,
+        0 0 50px #ff0066,
+        0 0 90px #ff0066;
+    animation:
+        messageIn 1s cubic-bezier(.17,.89,.32,1.3),
+        messagePulse 1.5s infinite alternate;
+}
+
+@keyframes messageIn{
+    0%{
+        opacity:0;
+        transform:scale(.1) rotate(-15deg);
+        filter:blur(20px);
+    }
+    70%{
+        transform:scale(1.15) rotate(3deg);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1) rotate(0);
+        filter:blur(0);
+    }
+}
+
+@keyframes messagePulse{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.06);
+    }
+}
+
+/* حالت بعد از کلیک */
+
+.love-mode .card{
+    background:rgba(255,50,100,.16);
+    border-color:rgba(255,255,255,.45);
+    box-shadow:
+        0 25px 100px rgba(120,0,40,.5),
+        0 0 70px rgba(255,30,100,.3),
+        inset 0 1px rgba(255,255,255,.4);
+}
+
+.love-mode .title,
+.love-mode .subtitle,
+.love-mode .love-button{
+    display:none;
+}
+
+.love-mode .message{
+    display:block;
+}
+
+/* قلب‌ها */
+
+.heart{
+    position:fixed;
+    bottom:-60px;
+    font-size:30px;
+    pointer-events:none;
+    z-index:10;
+    animation:heartFly linear forwards;
+    filter:drop-shadow(0 0 10px #ff0055);
+}
+
+@keyframes heartFly{
+    0%{
+        transform:translateY(0) translateX(0) rotate(0) scale(.5);
+        opacity:0;
+    }
+    10%{
+        opacity:1;
+    }
+    50%{
+        transform:
+            translateY(-50vh)
+            translateX(var(--move))
+            rotate(180deg)
+            scale(1.3);
+    }
+    100%{
+        transform:
+            translateY(-115vh)
+            translateX(calc(var(--move) * -1))
+            rotate(360deg)
+            scale(.7);
+        opacity:0;
+    }
+}
+
+/* فلش نور */
+
+.flash{
+    position:fixed;
+    inset:0;
+    background:white;
+    opacity:0;
+    pointer-events:none;
+    z-index:100;
+}
+
+.flash.active{
+    animation:flash .5s ease;
+}
+
+@keyframes flash{
+    0%{opacity:0}
+    30%{opacity:.8}
+    100%{opacity:0}
+}
+
+/* لرزش */
+
+.shake{
+    animation:shake .55s ease!important;
+}
+
+@keyframes shake{
+    0%{transform:translate(0)}
+    15%{transform:translate(-12px,8px) rotate(-2deg)}
+    30%{transform:translate(10px,-8px) rotate(2deg)}
+    45%{transform:translate(-8px,-5px) rotate(-2deg)}
+    60%{transform:translate(8px,5px) rotate(2deg)}
+    75%{transform:translate(-5px,3px)}
+    100%{transform:translate(0)}
+}
+
+/* موبایل */
+
+@media(max-width:600px){
+    .card{
+        padding:50px 22px;
+        border-radius:28px;
+    }
+
+    .subtitle{
+        font-size:14px;
+    }
+
+    .love-button{
+        font-size:18px;
+        padding:17px 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<div class="flash" id="flash"></div>
+
+<div class="card" id="card">
+
+    <div class="title">
+        یک پیام ویژه ❤️
+    </div>
+
+    <div class="subtitle">
+        برای دیدن یک پیام خیلی مهم، روی دکمه پایین بزن!
+    </div>
+
+    <button class="love-button" id="loveButton">
+        💖 بزن روش 💖
+    </button>
+
+    <div class="message">
+        خاله جانی<br>
+        دوستت دارم !!! ❤️
+    </div>
+
+</div>
+
+<script>
+
+/* ساخت ذرات */
+
+for(let i=0;i<70;i++){
+
+    const p=document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(4+Math.random()*8)+"s";
+    p.style.animationDelay=Math.random()*8+"s";
+    p.style.width=(2+Math.random()*5)+"px";
+    p.style.height=p.style.width;
+
+    document.body.appendChild(p);
+}
+
+
+/* کلیک */
+
+const button=document.getElementById("loveButton");
+const card=document.getElementById("card");
+const flash=document.getElementById("flash");
+
+let clicked=false;
+
+button.addEventListener("click",()=>{
+
+    if(clicked) return;
+
+    clicked=true;
+
+    /* فلش */
+
+    flash.classList.add("active");
+
+    setTimeout(()=>{
+        flash.classList.remove("active");
+    },500);
+
+    /* لرزش شدید */
+
+    document.body.classList.add("shake");
+
+    setTimeout(()=>{
+        document.body.classList.remove("shake");
+    },600);
+
+    /* تغییر حالت */
+
+    document.body.classList.add("love-mode");
+
+    /* قلب‌های انفجاری */
+
+    createHeartExplosion();
+
+    /* ادامه تولید قلب */
+
+    setInterval(createHeart,180);
+
+});
+
+
+/* قلب تصادفی */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const hearts=["❤️","💗","💖","💕","💓","💘","💝"];
+
+    heart.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(20+Math.random()*40)+"px";
+    heart.style.animationDuration=(3+Math.random()*4)+"s";
+    heart.style.setProperty(
+        "--move",
+        (Math.random()*250-125)+"px"
+    );
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
+}
+
+
+/* انفجار قلب */
+
+function createHeartExplosion(){
+
+    for(let i=0;i<45;i++){
+
+        setTimeout(()=>{
+
+            const heart=document.createElement("div");
+
+            heart.className="heart";
+
+            const hearts=["❤️","💗","💖","💕","💓","💘","💝"];
+
+            heart.innerHTML=
+                hearts[Math.floor(Math.random()*hearts.length)];
+
+            heart.style.left=(45+Math.random()*10)+"vw";
+            heart.style.bottom=(35+Math.random()*20)+"vh";
+
+            heart.style.fontSize=
+                (25+Math.random()*45)+"px";
+
+            heart.style.animationDuration=
+                (2+Math.random()*3)+"s";
+
+            heart.style.setProperty(
+                "--move",
+                (Math.random()*500-250)+"px"
+            );
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },6000);
+
+        },i*35);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
